@@ -1,14 +1,2 @@
-<%= javascript_include_tag 'jquery.qrcode.min.js', :plugin => 'redmine_qr_issue' %>
 
-<div class="qrcode" title="<%= issue_url(issue) %>"></div>
-<script type="text/javascript">
-  (function($){
-    $(document).ready(function() {
-      $(".qrcode").each(function() {
-        var e = $(this);
-        e.qrcode({width:80,height:80,text:e.attr('title')});
-      });
-    });
-  })(jQuery);
-</script>
 

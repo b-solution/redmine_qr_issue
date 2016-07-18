@@ -17,3 +17,9 @@ class Hooks < Redmine::Hook::ViewListener
 
   render_on :view_issues_show_details_bottom, :partial=> 'issues/issue_qr'
 end
+
+Rails.application.config.to_prepare do
+  Redmine::Export::PDF::ITCPDF.send(:include, QrPdf::PdfPatch)
+  Redmine::Export::PDF::IssuesPdfHelper.send(:include, QrPdf::PdfHelperPatch)
+  IssuesController.send(:include, QrPdf::IssuesControllerPatch)
+end
